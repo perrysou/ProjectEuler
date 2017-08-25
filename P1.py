@@ -6,11 +6,11 @@ The sum of these multiples is 23.
 Find the sum of all the multiples of 3 or 5 below 1000.
 """
 
-# input number of queries
+# input number of test cases
 t = int(raw_input().strip())
-# for every query, compute the sum
+# for each case, compute the sum
 for _ in range(t):
-    # input of n as a long integer
+    # input of n as a long integer to deal with big numbers
     n = long(raw_input().strip())
     # find the number of multiples within [0, n)
     m3 = (n - 1) / 3

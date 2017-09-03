@@ -29,7 +29,7 @@ def getPrimeFactors(n):
             primeCount[x] = 1  # first appearance of a prime#, add to the dictionary
         else:
             # loop through prime numbers i in the dictionary (i <= x)
-            for i in primeCount.iterkeys():
+            for i in primeCount:
                 temp = 0
                 while x % i == 0:
                     temp += 1
@@ -42,12 +42,14 @@ def getPrimeFactors(n):
 
 
 def main():
-    t = int(raw_input().strip())
+    t = 1
+    # t = int(raw_input().strip())
     for a0 in xrange(t):
-        n = int(raw_input().strip())
+        n = 100
+        # n = int(raw_input().strip())
         primeCount = getPrimeFactors(n)
         product = 1
-        for p in primeCount.iterkeys():
+        for p in primeCount:
             product *= p ** primeCount[p]
         print product
 

@@ -5,7 +5,6 @@ What is the smallest positive number that is evenly divisible by all of the numb
 """
 
 import math
-import copy
 
 
 # check if n (n>=2) is a prime number
@@ -52,6 +51,7 @@ def main():
         for p in primeCount:
             product *= p ** primeCount[p]
         print product
+
 
 if __name__ == '__main__':
     # print "This program is being run by itself"

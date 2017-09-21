@@ -31,16 +31,16 @@ def collatz(n, chainDict):
 
 
 def main():
-    # t = int(raw_input().strip())
-    t = random.randint(1, 10 ** 4)
+    t = int(raw_input().strip())
+    # t = random.randint(1, 10 ** 4)
     chainDict = {}
     chainMaxDict = {}
     n_old = 0
     chainMax = 0
     k_old = 1
     for a in range(t):
-        # n = long(raw_input().strip())
-        n = random.randint(1, 5 * 10 ** 5)
+        n = long(raw_input().strip())
+        # n = random.randint(1, 5 * 10 ** 5)
         if n > n_old:
             step = -1
         elif n < n_old:
@@ -49,7 +49,7 @@ def main():
             k_old = 1
         else:
             print chainMaxDict[n]
-            break
+            continue
 
         for nn in range(n, max(n_old, n / 2), step):
             collatz(nn, chainDict)
@@ -59,7 +59,7 @@ def main():
                     chainMax = chainDict[k]
                     k_old = max(k, k_old)
         chainMaxDict[n] = k_old
-        print n, k_old
+        print k_old
         n_old = n
 
 

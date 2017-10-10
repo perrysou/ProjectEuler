@@ -25,6 +25,7 @@ def main():
         n = long(raw_input().strip())
         print maxPrimeFactor(n)
 
+
 if __name__ == '__main__':
     # print "This program is being run by itself"
     main()

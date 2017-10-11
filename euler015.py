@@ -39,7 +39,7 @@ def main():
 
         init = [0, 0]
         goal = [n, m]
-        print getRoutes(n + 1, m + 1, init, goal, numRoutes) % (10 ** 9 + 7)
+        print getRoutes(n + 1, m + 1, init, goal, numRoutes) % (10**9 + 7)
         t -= 1
     return 0
 

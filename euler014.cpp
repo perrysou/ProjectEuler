@@ -43,7 +43,7 @@ int main(){
 	cin >> t;
 //    t = rand() % int(pow(10, 4)) + 1;
 //    t = 1;
-    map<long, long> chainDict, chainMaxDict;
+	map<long, long> chainDict, chainMaxDict;
 	long n, n_old = 0, chainMax = 0, k_old = 1;
 	long step;
 	while (t-- > 0) {

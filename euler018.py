@@ -10,6 +10,15 @@ That is, 3 + 7 + 4 + 9 = 23.
 
 Find the maximum total from top to bottom of the triangle below:
 
+1
+4
+3
+7 4
+2 4 6
+8 5 9 3
+
+1
+15
 75
 95 64
 17 47 82
@@ -31,17 +40,30 @@ NOTE: As there are only 16384 routes, it is possible to solve this problem by tr
 
 
 def main():
+    action = [[1, 0], [1, 1]]
     t = int(raw_input().strip())
-    # t = 1
     for _ in range(t):
         n = int(raw_input().strip())
-        total = 0
-        while n > 0:
-            raw_input()
-            maxNum = max(map(int, raw_input().strip().split()))
-            total += maxNum
-            n -= 1
-        print total
+        values = []
+        for i in range(n):
+            lineNext = map(int, raw_input().strip().split())
+            if len(lineNext) == 1:
+                values.append(lineNext)
+            else:
+                values.append([0] * len(lineNext))
+                for j, last in enumerate(lineLast):
+                    for a in action:
+                        nodeNext = (i - 1 + a[0], j + a[1])
+                        if 0 <= nodeNext[0] <= i and 0 <= nodeNext[1] <= nodeNext[0]:
+                            next = lineNext[nodeNext[1]] + last
+                            values[nodeNext[0]][nodeNext[1]] = max(values[nodeNext[0]][nodeNext[1]], next)
+            lineLast = values[i]
+            # if len(maxList) == 2**(len(valueList) - 1):
+            #     print 'getting out early!'
+            #     break
+        # print valueList
+        # print maxList
+        print max(values[-1])
     return
 
 

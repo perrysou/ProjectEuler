@@ -64,8 +64,11 @@ def main():
         # print valueList
         # print maxList
         print max(values[-1])
-    return
+    return 0
 
 
 if __name__ == '__main__':
+    # print "This program is being run by itself"
     main()
+else:
+    print 'I am being imported from another module'

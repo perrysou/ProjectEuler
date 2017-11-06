@@ -1,16 +1,10 @@
 """
 """
 
-
-import math
-
-
+from itertools import permutations
 def main():
-    t = int(raw_input().strip())
-    while t:
-        n = int(raw_input().strip())
-        print sum(map(int, str(math.factorial(n))))
-        t -= 1
+    l = list(permutations(range(0, 10)))
+    print l[10**6 - 1]
     return 0
 
 

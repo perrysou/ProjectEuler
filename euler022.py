@@ -30,18 +30,23 @@ alphabet = {'A': 1,
 
 
 def main():
+    names = []
+    n = int(raw_input().strip())
+    while n:
+        names.append(raw_input().strip())
+        n -= 1
+    names.sort()
 
-    with open('p022_names.txt', mode='r') as f:
-        it = csv.reader(f, delimiter=',', quotechar='"')
-        names = it.next()
-        names.sort()
-        grandtotal = 0
-        for i, name in enumerate(names):
-            total = 0
-            for letter in name:
-                total += alphabet[letter]
-            grandtotal += total * (i + 1)
-        print grandtotal
+    q = int(raw_input().strip())
+    while q:
+        nameQ = raw_input().strip()
+        total = 0
+        i = names.index(nameQ)
+        for letter in nameQ:
+            total += alphabet[letter]
+        total *= (i + 1)
+        print total
+        q -= 1
     return 0
 
 

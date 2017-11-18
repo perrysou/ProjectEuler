@@ -1,10 +1,20 @@
 """
+Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n.
+If d(a) = b and d(b) = a, where a != b,
+then a and b are an amicable pair and each of a and b are called amicable numbers.
+
+For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110; therefore d(220) = 284.
+The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
+
+Evaluate the sum of all the amicable numbers under N.
 """
 
+import random
 import math
 
 amicables = {}
 dsums = {}
+sums = [-1] * (100000 + 1)
 
 
 def divisorSum(n):
@@ -25,26 +35,27 @@ def areAmicable(n1, n2):
 
 
 def main():
-    sums = {}
+    i = 1
+    n_old = 0
+    total = 0
     # t = int(raw_input().strip())
-    t = 1
+    t = random.randint(1, 1000)
     while t:
         # n = int(raw_input().strip())
-        n = 100000
-        total = 0
-        for i in range(2, n):
-            if i in amicables:
-                total += i
-                sums[i + 1] = total
-            else:
-                j = divisorSum(i)
-                if areAmicable(i, j):
-                    amicables[i] = j
-                    amicables[j] = i
+        n = random.randint(1, 100000)
+        if sums[n] == -1:
+            while i <= n:
+                if i in amicables:
                     total += i
-                    sums[i + 1] = total
-        sums[n] = total
-        print total
+                else:
+                    j = divisorSum(i)
+                    if areAmicable(i, j):
+                        amicables[i] = j
+                        amicables[j] = i
+                        total += i
+                sums[i] = total
+                i += 1
+        print sums[n]
         t -= 1
     return 0
 

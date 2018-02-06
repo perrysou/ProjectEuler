@@ -17,21 +17,22 @@ def getCombos(n, coins):
     coins_allowed = [_ for _ in coins if n >= _]
     if (n, len(coins)) not in combos:
         counts = 0
-        while len(coins_allowed) >= 2:
+        while len(coins_allowed) >= 3:
             n_new = n
             n_new -= coins_allowed[-1]
             counts += getCombos(n_new, coins_allowed)
             coins_allowed.pop()
-        combos[(n, len(coins))] = counts + 1
+        combos[(n, len(coins))] = counts + n / 2 + 1
     return combos[(n, len(coins))]
 
 
 def main():
-    # t = int(raw_input().strip())
-    t = 10**4
+    t = int(raw_input().strip())
+    # t = 10**4
+    # t = 1
     while t:
-        # n = long(raw_input().strip())
-        n = 10**5
+        n = long(raw_input().strip())
+        # n = 10**5
         print getCombos(n, p) % (10**9 + 7)
         t -= 1
 

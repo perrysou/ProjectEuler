@@ -27,13 +27,48 @@ What is the greatest product of four adjacent numbers in the same direction
 (up, down, left, right, or diagonally) in the 20*20 grid?
 """
 
+import sys
 
 def main():
-    return 0
+    grid = []
+    for grid_i in range(20):
+        grid_t = [int(grid_temp) for grid_temp in input().strip().split(' ')]
+        grid.append(grid_t)
+
+    def product_right(grid, i, j):
+        if j > 16: return 0
+        return grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3]
+
+    def product_down(grid, i, j):
+        if i > 16: return 0
+        return grid[i][j] * grid[i + 1][j] * grid[i + 2][j] * grid[i + 3][j]
+
+    def product_northeast(grid, i, j):
+        if i < 3 or j > 16 : return 0
+        return grid[i][j] * grid[i - 1][j + 1] * grid[i - 2][j + 2] * grid[i - 3][j + 3]
+
+    def product_southeast(grid, i, j):
+        if i > 16 or j > 16: return 0
+        return grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * grid[i + 3][j + 3]
+
+    def product_max(grid, i, j):
+        return max([product_down(grid, i, j), product_right(grid, i, j), product_northeast(grid, i, j), product_southeast(grid, i, j)])
+
+    product_max_all = 0
+    product_max_ind = None
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            # print(i, j, grid[i][j])
+            product_max_current = product_max(grid, i, j)
+            if product_max_current > product_max_all:
+                product_max_ind = (i, j)
+                product_max_all = product_max_current
+
+    return product_max_all
 
 
 if __name__ == '__main__':
     # print "This program is being run by itself"
-    main()
+    print(main())
 else:
     print 'I am being imported from another module'

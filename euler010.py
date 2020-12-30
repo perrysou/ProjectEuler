@@ -8,7 +8,7 @@ import math
 
 
 def sieveofSundaram(n):
-    nums = range(2, n + 1)
+    nums = list(range(2, n + 1))
     for i in range(2, n - 1, 2):
         nums[i] = 0
     for i in range(1, int((-1 + math.sqrt(n)) / 2) + 1):
@@ -16,40 +16,38 @@ def sieveofSundaram(n):
         while 2 * (i + j + 2 * i * j) + 1 <= n:
             nums[2 * (i + j + 2 * i * j) - 1] = 0
             j += 1
-    total = 0
-    totals = {}
-    for i, num in enumerate(nums):
-        total += num
-        totals[i + 2] = total
-    return totals
+    return [x for x in nums if x != 0]
 
 
 def sieveofEratosthenes(n):
-    nums = range(2, n + 1)
+    nums = list(range(2, n + 1))
     for i in range(2, int(math.sqrt(n)) + 1):
         if nums[i - 2] != 0:
             for j in range(i - 2 + i, n - 2 + 1, i):
                 nums[j] = 0
+    return [x for x in nums if x != 0]
+
+def sumOfPrimes(n):
     total = 0
     totals = {}
+    nums = sieveofEratosthenes(n)
     for i, num in enumerate(nums):
         total += num
         totals[i + 2] = total
-    return totals
-
+    return total, totals
 
 def main():
     sumList = {}
     t = 1
     # t = int(raw_input().strip())
     for a0 in xrange(t):
-        n = 10
+        n = 10 ** 6
         # n = int(raw_input().strip())
         # print sieveofSundaram(n) == sieveofEratosthenes(n)
         # return
         if n not in sumList:
-            sumList = sieveofSundaram(n)
-        print sumList[n]
+            sumFinal, sumList = sumOfPrimes(n)
+        print sumFinal, sumList[10]
     # print sumList
     return 0
 

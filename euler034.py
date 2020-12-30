@@ -32,7 +32,7 @@ def curiousQ(n):
 
 
 def main():
-    n = long(raw_input().strip())
+    n = long(input().strip())
     # n = random.randint()
     l = []
     # n = 10**5
@@ -41,7 +41,8 @@ def main():
         if curiousQ(x):
             cumsum += x
         l.append(cumsum)
-    print cumsum
+    print
+    cumsum
     return 0
 
 
@@ -49,4 +50,5 @@ if __name__ == '__main__':
     # print "This program is being run by itself"
     main()
 else:
-    print 'I am being imported from another module'
+    print
+    'I am being imported from another module'
